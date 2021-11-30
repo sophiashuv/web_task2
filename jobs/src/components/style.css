@@ -1,0 +1,8 @@
+
+.cart-book-item-container{
+    background-color: aliceblue;
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
