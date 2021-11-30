@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { createJob } from '../api';
-import {Button}  from 'react-bootstrap';
+import {Button, Form}  from 'react-bootstrap';
 
 
 export class AddJobForm extends Component {
@@ -37,18 +37,30 @@ export class AddJobForm extends Component {
   render(){
     return (
       <div>
-        <input
-          id="timeout"
-          placeholder="timeout"
-          type="number"
-          value={this.state.timeout}
-          onChange={this.onTimeoutChange}
-        />
-        <textarea
-          value={this.state.text}
-          onChange={this.onTextChange}
-        />
-        <Button variant="primary" onClick={this.onSubmit}>Create Job</Button>
+        {/*<input*/}
+        {/*  id="timeout"*/}
+        {/*  placeholder="timeout"*/}
+        {/*  type="number"*/}
+        {/*  value={this.state.timeout}*/}
+        {/*  onChange={this.onTimeoutChange}*/}
+        {/*/>*/}
+        <Form>
+          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Label>Time</Form.Label>
+            <Form.Control id="timeout"
+                          placeholder="timeout"
+                          type="number"
+                          value={this.state.timeout}
+                          onChange={this.onTimeoutChange}/>
+          </Form.Group>
+        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+          <Form.Label>Enter text here</Form.Label>
+          <Form.Control as="textarea" rows={3}
+                        value={this.state.text}
+                        onChange={this.onTextChange}/>
+        </Form.Group>
+        <Button variant="success" onClick={this.onSubmit}>Create Job</Button>
+        </Form>
       </div>
     );
   }
