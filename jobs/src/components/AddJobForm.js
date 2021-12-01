@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { createJob } from '../api';
+import './style.css';
 import {Button, Form}  from 'react-bootstrap';
 
 
@@ -44,9 +45,12 @@ export class AddJobForm extends Component {
         {/*  value={this.state.timeout}*/}
         {/*  onChange={this.onTimeoutChange}*/}
         {/*/>*/}
-        <Form>
+        <Form className="form-wrapper">
+          <Form.Group className="mb-3">
+            <div className="title">Text to Image Transformer</div>
+          </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label>Time</Form.Label>
+            <Form.Label>Enter time in milliseconds</Form.Label>
             <Form.Control id="timeout"
                           placeholder="timeout"
                           type="number"
@@ -54,7 +58,7 @@ export class AddJobForm extends Component {
                           onChange={this.onTimeoutChange}/>
           </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Enter text here</Form.Label>
+          <Form.Label>Enter text</Form.Label>
           <Form.Control as="textarea" rows={3}
                         value={this.state.text}
                         onChange={this.onTextChange}/>
