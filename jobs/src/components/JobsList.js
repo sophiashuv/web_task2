@@ -1,5 +1,7 @@
 import { Component } from 'react';
 import { cancelJob, createJob, loadJobs } from '../api';
+import './style.css';
+import {Button}  from 'react-bootstrap';
 
 
 export class JobsList extends Component {
@@ -41,7 +43,8 @@ export class JobsList extends Component {
             <th scope="col">#</th>
             <th scope="col">id</th>
             <th scope="col">status</th>
-            <th scope="col"> </th>
+            <th scope="col">result</th>
+            <th scope="col">Bottom</th>
           </tr>
           </thead>
           <tbody>
@@ -50,14 +53,15 @@ export class JobsList extends Component {
                   <th scope="row">{index + 1}</th>
                   <td>{job._id}</td>
                   <td>{job.status}</td>
-
+                  <td>
                   {job.status === 'finished' && (
-                      <td>
-                <a href={`http://localhost:3001/static/${job.output}`}>result</a>
-              </td>
+                      <a href={`http://localhost:3001/static/${job.output}`}>result</a>
                   )}
-                  {job.status === 'finished' && (<span>{job.time / 1000}s</span>)}
-                  {job.status === 'pending' && (<button onClick={() => this.cancelJob(job._id)}>Cancel</button>)}
+                  </td>
+                  <td>
+                    {job.status === 'finished' && (<span>{job.time / 1000}s</span>)}
+                    {job.status === 'pending' && (<Button variant="warning" onClick={() => this.cancelJob(job._id)}>Cancel</Button>)}
+                  </td>
                 </tr>
             ))}
           </tbody>
